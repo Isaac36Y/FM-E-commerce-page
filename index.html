@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <title>E-commerce product page</title>
+</head>
+<body>
+  <header class="header">
+    <div class="header__left-container">
+      <button type="button" aria-controls="mobile-nav" aria-label="open the menu" aria-expanded="false" class="header__menu-button" id="menu-btn">
+        <svg viewBox="0 0 100 70" width="16" height="20" class="header__hamburger">
+          <rect width="100" height="15"></rect>
+          <rect y="35" width="100" height="15"></rect>
+          <rect y="70" width="100" height="15"></rect>
+        </svg>
+      </button>
+      <div class="dim-bg" hidden></div>
+      <nav class="header__nav-mobile | menu-mobile" id="mobile-nav">
+        <ul class="header__nav-mobile-ul">
+          <li class="header__nav-mobile-li">Collections</li>
+          <li class="header__nav-mobile-li">Men</li>
+          <li class="header__nav-mobile-li">Women</li>
+          <li class="header__nav-mobile-li">About</li>
+          <li class="header__nav-mobile-li">Contact</li>
+        </ul>
+      </nav>
+      <img src="./images/logo.svg" alt="company logo" aria-label="company logo" width="137" height="20">
+      <nav class="header__nav-desktop | menu-dt" hidden>
+        <ul class="header__nav-desktop-ul">
+          <li class="header__nav-desktop-li">Collections</li>
+          <li class="header__nav-desktop-li">Men</li>
+          <li class="header__nav-desktop-li">Women</li>
+          <li class="header__nav-desktop-li">About</li>
+          <li class="header__nav-desktop-li">Contact</li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header__right-container">
+      <button class="header__cart-button" aria-controls="shopping-cart"><img src="./images/icon-cart.svg" alt="shopping cart"></button>
+      <dialog class="header__cart" id="shopping-cart">
+      </dialog>
+      <button class="header__profile-button" aria-controls="profile-menu"><img src="./images/image-avatar.png" alt="profile picture" height="25" width="25"></button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section role="region" aria-label="shoe photo gallery" class="main__gallery" id="photo-gallery">
+      <div role="group" aria-label="Photo 1 of 4" class="main__gallery-img one" id="image-1">
+        <img src="./images/image-product-1.jpg" alt="One shoe flat on the ground with the other shoe behind it showing the sole of the shoe">
+      </div>
+      <div role="group" aria-label="Photo 2 of 4" class="main__gallery-img two" id="image-2" hidden>
+        <img src="./images/image-product-2.jpg" alt="Right shoe on a rock showing the outer part of shoe and the left pointing down showing the top of the shoe">
+      </div>
+      <div role="group" aria-label="Photo 3 of 4" class="main__gallery-img three" id="image-3" hidden>
+        <img src="./images/image-product-3.jpg" alt="Just the right show on a rock showing the out part of shoe">
+      </div>
+      <div role="group" aria-label="Photo 4 of 4" class="main__gallery-img four" id="image-4" hidden>
+        <img src="./images/image-product-4.jpg" alt="The right shoe hanging at the end of a rock showing the inner part of shoe">
+      </div>
+      <button class="main__gallery-next" aria-label="next photo" aria-controls="photo-gallery"><img src="./images/icon-next.svg" alt="right arrow"></button>
+      <button class="main__gallery-previous" aria-label="previous photo" aria-controls="photo-gallery"><img src="./images/icon-previous.svg" alt="left arrow"></button>
+    </section>
+    <section aria-labelledby="main-header" aria-describedby="main-description" class="main__info">
+      <p class="main__info-company | company">SNEAKER COMPANY</p>
+      <h1 class="main__info-header | heading" id="main-header">Fall Limited Edition Sneakers</h1>
+      <p class="main__info-description | description" id="main-description">
+        These low-profile sneakers are your perfect casual wear companion. Featuring a
+        durable rubber outer sole, they’ll withstand everything the weather can offer.
+      </p>
+      <div class="main__pricing-container">
+        <div class="price-sale">
+          <p class="main__pricing-current | price">
+            <span class="sr-only">current price is</span>
+            $125.00
+          </p>
+          <p class="main__pricing-sale | tp3">
+            <span class="sr-only">sale reduction is</span>
+            50%
+          </p>
+        </div>
+        <p class="main__pricing-original | tp3">
+          <span class="sr-only">original price was</span>
+          <s>$250.00</s>
+        </p>
+      </div>
+      <div class="main__quantity-container">
+        <img src="./images/icon-minus.svg" alt="" aria-label="minus one from qunatity">
+        <p class="main__quantity | tp3">0</p>
+        <img src="./images/icon-plus.svg" alt="" aria-label="add one to quantity">
+      </div>
+      <button class="main__add-button | tp3">
+        <img src="./images/icon-cart.svg" alt="shopping-cart">
+        Add to cart
+      </button>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
