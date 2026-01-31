@@ -39,8 +39,14 @@
       </nav>
     </div>
     <div class="header__right-container">
-      <button class="header__cart-button" aria-controls="shopping-cart"><img src="./images/icon-cart.svg" alt="shopping cart"></button>
-      <dialog class="header__cart" id="shopping-cart">
+      <button type="button" class="header__cart-button" aria-controls="shopping-cart" id="cart-button"><img src="./images/icon-cart.svg" alt="shopping cart"></button>
+      <dialog class="header__cart" id="shopping-cart" style="display: none"> <!-- set display none instead of default display none for JS -->
+        <p class="header__cart-head | tp3">Cart</p>
+        <hr>
+        <p class="header__cart-empty | tp3">Your cart is empty</p>   
+        <div class="header__cart-product" id="cart-product-container">       
+        </div>
+        <button type="button" class="header__cart-checkout | tp3" aria-controls="shopping-cart" id="checkout-button" hidden>Checkout</button>
       </dialog>
       <button class="header__profile-button" aria-controls="profile-menu"><img src="./images/image-avatar.png" alt="profile picture" height="25" width="25"></button>
     </div>
@@ -51,17 +57,17 @@
       <div role="group" aria-label="Photo 1 of 4" class="main__gallery-img one" id="image-1">
         <img src="./images/image-product-1.jpg" alt="One shoe flat on the ground with the other shoe behind it showing the sole of the shoe">
       </div>
-      <div role="group" aria-label="Photo 2 of 4" class="main__gallery-img two" id="image-2" hidden>
+      <div role="group" aria-label="Photo 2 of 4" class="main__gallery-img two" id="image-2">
         <img src="./images/image-product-2.jpg" alt="Right shoe on a rock showing the outer part of shoe and the left pointing down showing the top of the shoe">
       </div>
-      <div role="group" aria-label="Photo 3 of 4" class="main__gallery-img three" id="image-3" hidden>
+      <div role="group" aria-label="Photo 3 of 4" class="main__gallery-img three" id="image-3">
         <img src="./images/image-product-3.jpg" alt="Just the right show on a rock showing the out part of shoe">
       </div>
-      <div role="group" aria-label="Photo 4 of 4" class="main__gallery-img four" id="image-4" hidden>
+      <div role="group" aria-label="Photo 4 of 4" class="main__gallery-img four" id="image-4">
         <img src="./images/image-product-4.jpg" alt="The right shoe hanging at the end of a rock showing the inner part of shoe">
       </div>
-      <button class="main__gallery-next" aria-label="next photo" aria-controls="photo-gallery"><img src="./images/icon-next.svg" alt="right arrow"></button>
-      <button class="main__gallery-previous" aria-label="previous photo" aria-controls="photo-gallery"><img src="./images/icon-previous.svg" alt="left arrow"></button>
+      <button class="main__gallery-next" aria-label="next photo" aria-controls="photo-gallery" onclick="changeSlides(1)"><img src="./images/icon-next.svg" alt="right arrow"></button>
+      <button class="main__gallery-previous" aria-label="previous photo" aria-controls="photo-gallery" onclick="changeSlides(-1)"><img src="./images/icon-previous.svg" alt="left arrow"></button>
     </section>
     <section aria-labelledby="main-header" aria-describedby="main-description" class="main__info">
       <p class="main__info-company | company">SNEAKER COMPANY</p>
@@ -74,7 +80,7 @@
         <div class="price-sale">
           <p class="main__pricing-current | price">
             <span class="sr-only">current price is</span>
-            $125.00
+            $<span id="current-price">125.00</span>
           </p>
           <p class="main__pricing-sale | tp3">
             <span class="sr-only">sale reduction is</span>
@@ -87,11 +93,11 @@
         </p>
       </div>
       <div class="main__quantity-container">
-        <img src="./images/icon-minus.svg" alt="" aria-label="minus one from qunatity">
-        <p class="main__quantity | tp3">0</p>
-        <img src="./images/icon-plus.svg" alt="" aria-label="add one to quantity">
+        <button class="main__quantity-minus | disabled" aria-label="minus quantity by 1" aria-controls="quantity" aria-disabled="true" disabled><img src="./images/icon-minus.svg" alt="" aria-label="minus one from qunatity"></button>
+        <p class="main__quantity | tp3" id="quantity">0</p>
+        <button class="main__quantity-plus" aria-label="increase quantity by 1" aria-controls="quantity"><img src="./images/icon-plus.svg" alt="" aria-label="add one to quantity"></button>
       </div>
-      <button class="main__add-button | tp3">
+      <button class="main__add-button | tp3" id="add-to-cart">
         <img src="./images/icon-cart.svg" alt="shopping-cart">
         Add to cart
       </button>
