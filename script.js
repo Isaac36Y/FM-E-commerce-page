@@ -8,6 +8,7 @@ const cartProducts = document.querySelector('#cart-product-container');
 const checkoutBtn = document.querySelector('#checkout-button');
 const prodCost = document.querySelector('#current-price');
 const emptyMsg = document.querySelector('.header__cart-empty');
+const cartQuantity = document.querySelector('.header__cart-quantity')
 
 const slides = document.querySelectorAll('.main__gallery-img');
 
@@ -16,6 +17,7 @@ const minusQuantityBtn = document.querySelector('.main__quantity-minus');
 const plusQuantityBtn = document.querySelector('.main__quantity-plus');
 const addToCartBtn = document.querySelector('#add-to-cart');
 
+let cartItems = []
 let cartLength = 0
 let deleteBtns;
 let index = 0;
@@ -28,7 +30,7 @@ const toggleMenu = () => {
     if (!open) {
         navMenu.style.visibility = 'visible';
         menuBtn.setAttribute('aria-expanded', 'true');
-          overlay.removeAttribute('hidden')  
+        overlay.removeAttribute('hidden')  
     }else {
         setTimeout(() => {
             navMenu.style.visibility = 'hidden';
@@ -65,13 +67,42 @@ const disableMinusBtn = (n) => {
 }
 
 const changeQuantity = (n) => {
-    quant += n;
+    quant = Math.max(0, quant + n);
     quantity.innerText = quant;
     disableMinusBtn(quant);
 }
 
+const showError = () => {
+    const errPop = document.querySelector('.main__error-container');
+    const errMsg = document.querySelector('.main__error-message');
+
+    errPop.classList.add('open');
+    errPop.setAttribute('aria-hidden', 'false')
+    errMsg.textContent = ""
+    setTimeout(() => {
+        errMsg.textContent = "Quantity must be over 0 to add item to cart"
+    }, 50)
+    setTimeout(() => {
+        errPop.classList.remove('open');
+        errPop.setAttribute('aria-hidden', 'true')
+    }, 5000)
+        
+}
+
+const showCartQuantity = () => {
+    let totalQuant =+ cartItems.map(item => item.quantity).reduce((acc, currValue) => {return acc + currValue}, 0)
+
+    if (totalQuant > 0) {
+        cartQuantity.style.display = 'flex'
+        cartQuantity.textContent = totalQuant 
+    }else {
+        cartQuantity.style.display = 'none'
+        cartQuantity.textContent = totalQuant 
+    }
+}
+
 const updateCartUI = () => {
-    if (cartLength > 0) {
+    if (cartItems.length > 0) {
         emptyMsg.setAttribute('hidden', '');
         checkoutBtn.removeAttribute('hidden')
         cartProducts.style.display = 'flex'
@@ -80,34 +111,45 @@ const updateCartUI = () => {
         checkoutBtn.setAttribute('hidden', '')
         cartProducts.style.display = 'none'
     }
+    showCartQuantity()
 }
 
 const deletesProductFromCart = (btn) => {
-    btn.closest('.entry').remove()
-    cartLength--
+    let productDiv = btn.closest('.entry');
+    let id = Number(productDiv.getAttribute('product-id'))
+
+    cartItems = cartItems.filter(item => item.id !== id)
+    productDiv.remove()
+
     updateCartUI()
 }
 
 const addsProductToCart = () => {
     let cost = +prodCost.innerText
-    cartLength++
 
-    cartProducts.innerHTML += 
-    `<div class="entry">
-        <img src="./images/image-product-1-thumbnail.jpg" alt="" class="header__cart-img">
-        <div class="header__cart-labels">
-        <p>Fall Limited Edition Sneakers</p>
-        <p><span>$${cost}.00</span> x <span class="header__cart-quantity">${quant}</span><span class="header__cart-total tp3">$${(cost * quant)}.00</span></p>
-        </div>
-        <button class="header__cart-delete" onclick="deletesProductFromCart(this)"><img src="./images/icon-delete.svg" alt=""></button>
-    </div>`
+    if (quant === 0) {
+        showError()
+        return
+    }else {
+        cartProducts.innerHTML += 
+        `<div class="entry" product-id="${cartItems.length + 1}">
+            <img src="./images/image-product-1-thumbnail.jpg" alt="" class="header__cart-img">
+            <div class="header__cart-labels">
+            <p>Fall Limited Edition Sneakers</p>
+            <p><span>$${cost}.00</span> x <span class="header__cart-quantity">${quant}</span><span class="header__cart-total tp3">$${(cost * quant)}.00</span></p>
+            </div>
+            <button class="header__cart-delete" onclick="deletesProductFromCart(this)"><img src="./images/icon-delete.svg" alt=""></button>
+        </div>`
+    }
 
+    cartItems.push({ id: cartItems.length + 1, quantity: quant })
 
     updateCartUI()
 }
 
 menuBtn.addEventListener('click', () => {
     toggleMenu()
+    console.log(cartItems)
 })
 
 addToCartBtn.addEventListener('click', () => {

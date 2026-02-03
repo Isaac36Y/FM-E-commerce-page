@@ -241,7 +241,26 @@ p {
 
 /* header cart */
 
-dialog[open] {
+.header__cart-button {
+    position: relative;
+}
+.header__cart-quantity {
+    position: absolute;
+    top: 0;
+    right: -0.25rem;
+    background-color: var(--orange500);
+    color: var(--white);
+    width: 1rem;
+    height: 0.75rem;
+    border-radius: 5rem;
+    font-size: 0.5rem;
+    font-weight: 700;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__cart[open] {
     width: 22.5rem;
     top: 4.5rem;
     border-radius: var(--bradius);
@@ -396,6 +415,25 @@ dialog[open] {
 }
 .main__quantity {
     color: var(--grey950)
+}
+
+.main__error-container {
+    position: absolute;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10rem);
+    transition: transform 0.3s ease-in-out;
+    background-color: var(--grey950);
+    color: var(--orange500);
+    width: 13rem;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-radius: var(--bradius);
+    z-index: 100;
+}
+
+.main__error-container.open {
+    transform: translateX(-50%) translateY(0);
 }
 
 .main__add-button {
