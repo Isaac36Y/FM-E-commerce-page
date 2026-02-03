@@ -244,7 +244,7 @@ p {
 .header__cart-button {
     position: relative;
 }
-.header__cart-quantity {
+.header__cart-button-quantity {
     position: absolute;
     top: 0;
     right: -0.25rem;
@@ -392,13 +392,13 @@ p {
 .price-sale {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .main__pricing-sale {
     background-color: var(--grey950);
     color: var(--white);
-    padding-inline: 0.3rem;
+    padding-inline: 0.5rem;
     border-radius: 0.4rem;
 }
 

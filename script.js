@@ -8,11 +8,11 @@ const cartProducts = document.querySelector('#cart-product-container');
 const checkoutBtn = document.querySelector('#checkout-button');
 const prodCost = document.querySelector('#current-price');
 const emptyMsg = document.querySelector('.header__cart-empty');
-const cartQuantity = document.querySelector('.header__cart-quantity')
+const cartQuantity = document.querySelector('.header__cart-button-quantity')
 
 const slides = document.querySelectorAll('.main__gallery-img');
 
-const quantity = document.querySelector('.main__quantity');
+const pickedQuantity = document.querySelector('.main__quantity');
 const minusQuantityBtn = document.querySelector('.main__quantity-minus');
 const plusQuantityBtn = document.querySelector('.main__quantity-plus');
 const addToCartBtn = document.querySelector('#add-to-cart');
@@ -21,7 +21,7 @@ let cartItems = []
 let cartLength = 0
 let deleteBtns;
 let index = 0;
-let quant = +quantity.innerText;
+let quant = +pickedQuantity.innerText;
 
 
 const toggleMenu = () => {
@@ -85,7 +85,7 @@ const showError = () => {
     setTimeout(() => {
         errPop.classList.remove('open');
         errPop.setAttribute('aria-hidden', 'true')
-    }, 5000)
+    }, 4000)
         
 }
 
@@ -149,7 +149,6 @@ const addsProductToCart = () => {
 
 menuBtn.addEventListener('click', () => {
     toggleMenu()
-    console.log(cartItems)
 })
 
 addToCartBtn.addEventListener('click', () => {
