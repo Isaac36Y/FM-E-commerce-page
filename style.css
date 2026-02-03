@@ -117,16 +117,21 @@
   border: 0;
 }
 
+.disabled {
+    opacity: 0.4;
+}
+
 /* reset */
 
 
 *, *::before, *::after {
   box-sizing: border-box;
+  padding: 0;
 }
 
 *:not(dialog) {
   margin: 0;
-  padding: 0;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -174,7 +179,7 @@ p {
     padding: 1rem 1.5rem;
 }
 
-.header__menu-button, .header__cart-button, .header__profile-button {
+.header__menu-button, .header__cart-button, .header__profile-button, .main__quantity-minus, .main__quantity-plus, .header__cart-delete, .header__cart-checkout {
     background-color: transparent;
     border: 1px solid transparent;
 }
@@ -188,6 +193,8 @@ p {
     display: flex;
     gap: 1rem;
 }
+
+/* header menu */
 
 .header__hamburger rect {
     fill: var(--grey500);
@@ -232,6 +239,73 @@ p {
     z-index: 10;
 }
 
+/* header cart */
+
+dialog[open] {
+    width: 22.5rem;
+    top: 4.5rem;
+    border-radius: var(--bradius);
+    border: 1px solid transparent;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.header__cart-head {
+    padding: 1.5rem 1rem;
+    color: var(--grey950);
+}
+
+.header__cart-empty { 
+    text-align: center;
+    padding-block: 5rem;
+}
+
+.header__cart-product {
+    display: none;
+    margin: 1.5rem 1rem 0rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.entry {
+    display: flex;
+}
+
+.header__cart-img {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 0.25rem;
+}
+
+.header__cart-labels {
+    display: flex;
+    flex-direction: column;
+    margin-inline: 1rem;
+    font-size: var(--tp3-fs);
+    line-height: var(--tp3-lh);
+    color: var(--grey500)
+}
+
+.header__cart-total {
+    color: var(--grey950);
+    margin-inline: 0.5rem;
+}
+
+.header__cart-checkout {
+    width: 20rem;
+    margin: 1rem auto;
+    padding-block: 1rem;
+    color: var(--grey950);
+    border-radius: var(--bradius);
+    background-color: var(--orange500);
+}
+
+
 /* photo gallery */
 
 .main__gallery {
@@ -261,6 +335,7 @@ p {
     left: 53%;
     top: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
  .main__gallery-previous img {
@@ -268,6 +343,7 @@ p {
     left: 45%;
     top: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1;
  }
 
 .main__gallery-next {
