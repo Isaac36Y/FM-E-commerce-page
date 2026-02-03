@@ -241,13 +241,21 @@ p {
 
 /* header cart */
 
+<<<<<<< HEAD
 dialog[open] {
+=======
+dialog {
+>>>>>>> refs/remotes/origin/main
     width: 22.5rem;
     top: 4.5rem;
     border-radius: var(--bradius);
     border: 1px solid transparent;
     z-index: 15;
+<<<<<<< HEAD
     display: flex;
+=======
+    display: none;
+>>>>>>> refs/remotes/origin/main
     flex-direction: column;
     justify-content: center;
 
@@ -264,7 +272,11 @@ dialog[open] {
 }
 
 .header__cart-product {
+<<<<<<< HEAD
     display: none;
+=======
+    display: flex;
+>>>>>>> refs/remotes/origin/main
     margin: 1.5rem 1rem 0rem;
     align-items: center;
     justify-content: center;
