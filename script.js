@@ -1,6 +1,6 @@
 const navMenu = document.querySelector('#mobile-nav');
 const menuBtn = document.querySelector('#menu-btn')
-const overlay = document.querySelector('.dim-bg');
+const menuOverlay = document.querySelector('.dim-bg-menu');
 
 const dialog = document.querySelector('#shopping-cart')
 const cartBtn = document.querySelector('#cart-button');
@@ -11,6 +11,8 @@ const emptyMsg = document.querySelector('.header__cart-empty');
 const cartQuantity = document.querySelector('.header__cart-button-quantity')
 
 const slides = document.querySelectorAll('.main__gallery-img');
+const lightboxOverlay = document.querySelector('.dim-bg-lightbox');
+const gallery = document.querySelector('.main__gallery');
 
 const pickedQuantity = document.querySelector('.main__quantity');
 const minusQuantityBtn = document.querySelector('.main__quantity-minus');
@@ -18,8 +20,6 @@ const plusQuantityBtn = document.querySelector('.main__quantity-plus');
 const addToCartBtn = document.querySelector('#add-to-cart');
 
 let cartItems = []
-let cartLength = 0
-let deleteBtns;
 let index = 0;
 let quant = +pickedQuantity.innerText;
 
@@ -42,12 +42,15 @@ const toggleMenu = () => {
 
 const lightSelectedImage = (n) => {
     let thumbnails = document.querySelectorAll('.main__gallery-thumbnail')
+    let thumbnail = document.querySelector(`#thumbnail-${n + 1}`)
     thumbnails.forEach(img => {
         if (img.classList.contains('selected-img')) {
             img.classList.remove('selected-img')
+            img.setAttribute('aria-selected', 'false')
         }
     })
-    document.querySelector(`#thumbnail-${n + 1}`).classList.add('selected-img')
+    thumbnail.classList.add('selected-img')
+    thumbnail.setAttribute('aria-selected', 'true')
 }
 
 const showSlide = (n) => {
@@ -63,6 +66,24 @@ const changeSlides = (n) => {
     if (index >= slides.length) index = 0;
     if (index < 0) index = slides.length - 1;
     showSlide(index);
+}
+
+const showLightbox = () => {
+    const mediaSize = window.matchMedia('(min-width: 1130px)');
+    
+    if (!mediaSize.matches) {
+        return 
+    }else { 
+        gallery.classList.add('lightbox');
+        lightboxOverlay.removeAttribute('hidden');
+    }
+}
+
+const closeLightbox = (e) => {
+    if (e && typeof e.stopPropagation === "function") e.stopPropagation()
+     
+    gallery.classList.remove('lightbox');
+    lightboxOverlay.setAttribute('hidden', '');
 }
 
 const disableMinusBtn = (n) => {

@@ -17,7 +17,7 @@
           <rect y="70" width="100" height="15"></rect>
         </svg>
       </button>
-      <div class="dim-bg" onclick="toggleMenu()" hidden></div>
+      <div class="dim-bg-menu" onclick="toggleMenu()" hidden></div>
       <nav class="header__nav-mobile | menu-mobile" id="mobile-nav">
         <ul class="header__nav-mobile-ul">
           <li class="header__nav-mobile-li">Collections</li>
@@ -39,7 +39,7 @@
       </nav>
     </div>
     <div class="header__right-container">
-      <div class="contain">
+      <div class="header__cart-and-button-container">
         <button class="header__cart-button" aria-controls="shopping-cart" id="cart-button" onclick="dialog.toggleAttribute('open')">
           <img src="./images/icon-cart.svg" alt="shopping cart">
           <div class="header__cart-button-quantity"></div>
@@ -60,36 +60,38 @@
   <hr hidden>
 
   <main class="main">
-    <section role="region" aria-label="shoe photo gallery" class="main__gallery" id="photo-gallery">
-      <div role="group" aria-label="Photo 1 of 4" class="main__gallery-img one" id="image-1">
+    <section role="region" aria-label="shoe photo gallery" class="main__gallery" id="photo-gallery" onclick="showLightbox()">
+      <button class="lightbox-close" aria-label="close lightbox" onclick="closeLightbox(event)" hidden><img src="./images/icon-close.svg" alt="X"></button>
+      <div aria-label="Photo 1 of 4" class="main__gallery-img one" id="image-1">
         <img src="./images/image-product-1.jpg" alt="One shoe flat on the ground with the other shoe behind it showing the sole of the shoe">
       </div>
-      <div role="group" aria-label="Photo 2 of 4" class="main__gallery-img two" id="image-2">
+      <div aria-label="Photo 2 of 4" class="main__gallery-img two" id="image-2">
         <img src="./images/image-product-2.jpg" alt="Right shoe on a rock showing the outer part of shoe and the left pointing down showing the top of the shoe">
       </div>
-      <div role="group" aria-label="Photo 3 of 4" class="main__gallery-img three" id="image-3">
+      <div aria-label="Photo 3 of 4" class="main__gallery-img three" id="image-3">
         <img src="./images/image-product-3.jpg" alt="Just the right show on a rock showing the out part of shoe">
       </div>
-      <div role="group" aria-label="Photo 4 of 4" class="main__gallery-img four" id="image-4">
+      <div aria-label="Photo 4 of 4" class="main__gallery-img four" id="image-4">
         <img src="./images/image-product-4.jpg" alt="The right shoe hanging at the end of a rock showing the inner part of shoe">
       </div>
       <button class="main__gallery-next" aria-label="next photo" aria-controls="photo-gallery" onclick="changeSlides(1)"><img src="./images/icon-next.svg" alt="right arrow"></button>
       <button class="main__gallery-previous" aria-label="previous photo" aria-controls="photo-gallery" onclick="changeSlides(-1)"><img src="./images/icon-previous.svg" alt="left arrow"></button>
       <div class="main__gallery-thumbnail-container" hidden>
-        <div aria-label="thumbnail 1 of 4" class="main__gallery-thumbnail" id="thumbnail-1" onclick="showSlide(0)">
-          <img src="./images/image-product-1-thumbnail.jpg" alt="" width="88" height="88">
+        <div aria-label="thumbnail 1 of 4" class="main__gallery-thumbnail" id="thumbnail-1" aria-selected="true" onclick="showSlide(0)">
+          <img src="./images/image-product-1-thumbnail.jpg" alt="matches photo 1 of 4" width="88" height="88">
         </div>
-        <div aria-label="thumbnail 2 of 4" class="main__gallery-thumbnail" id="thumbnail-2" onclick="showSlide(1)">
-          <img src="./images/image-product-2-thumbnail.jpg" alt="" width="88" height="88">
+        <div aria-label="thumbnail 2 of 4" class="main__gallery-thumbnail" id="thumbnail-2" aria-selected="false" onclick="showSlide(1)">
+          <img src="./images/image-product-2-thumbnail.jpg" alt="matches photo 1 of 4" width="88" height="88">
         </div>
-        <div aria-label="thumbnail 3 of 4" class="main__gallery-thumbnail" id="thumbnail-3" onclick="showSlide(2)">
-          <img src="./images/image-product-3-thumbnail.jpg" alt="" width="88" height="88">
+        <div aria-label="thumbnail 3 of 4" class="main__gallery-thumbnail" id="thumbnail-3" aria-selected="false" onclick="showSlide(2)">
+          <img src="./images/image-product-3-thumbnail.jpg" alt="matches photo 1 of 4" width="88" height="88">
         </div>
-        <div aria-label="thumbnail 4 of 4" class="main__gallery-thumbnail" id="thumbnail-4" onclick="showSlide(3)">
-          <img src="./images/image-product-4-thumbnail.jpg" alt="" width="88" height="88">
+        <div aria-label="thumbnail 4 of 4" class="main__gallery-thumbnail" id="thumbnail-4" aria-selected="false" onclick="showSlide(3)">
+          <img src="./images/image-product-4-thumbnail.jpg" alt="matches photo 1 of 4" width="88" height="88">
         </div>
       </div>
     </section>
+    <div class="dim-bg-lightbox" onclick="closeLightbox()" hidden></div>
     <section role="region" aria-labelledby="main-header" aria-describedby="main-description" class="main__info">
       <p class="main__info-company | company">SNEAKER COMPANY</p>
       <h1 class="main__info-header | heading" id="main-header">Fall Limited Edition Sneakers</h1>
