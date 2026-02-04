@@ -29,7 +29,7 @@
       </nav>
       <img src="./images/logo.svg" alt="company logo" aria-label="company logo" width="137" height="20">
       <nav class="header__nav-desktop | menu-dt" hidden>
-        <ul class="header__nav-desktop-ul">
+        <ul class="header__nav-desktop-ul | description">
           <li class="header__nav-desktop-li">Collections</li>
           <li class="header__nav-desktop-li">Men</li>
           <li class="header__nav-desktop-li">Women</li>
@@ -39,21 +39,25 @@
       </nav>
     </div>
     <div class="header__right-container">
-      <button class="header__cart-button" aria-controls="shopping-cart" id="cart-button" onclick="dialog.toggleAttribute('open')">
-        <img src="./images/icon-cart.svg" alt="shopping cart">
-        <div class="header__cart-button-quantity"></div>
-      </button>
-      <dialog class="header__cart" id="shopping-cart">
-        <p class="header__cart-head | tp3">Cart</p>
-        <hr>
-        <p class="header__cart-empty | tp3">Your cart is empty</p>   
-        <div class="header__cart-product" id="cart-product-container">       
-        </div>
-        <button type="button" class="header__cart-checkout | tp3" aria-controls="shopping-cart" id="checkout-button" hidden>Checkout</button>
-      </dialog>
+      <div class="contain">
+        <button class="header__cart-button" aria-controls="shopping-cart" id="cart-button" onclick="dialog.toggleAttribute('open')">
+          <img src="./images/icon-cart.svg" alt="shopping cart">
+          <div class="header__cart-button-quantity"></div>
+        </button>
+        <dialog class="header__cart" id="shopping-cart">
+          <p class="header__cart-head | tp3">Cart</p>
+          <hr>
+          <p class="header__cart-empty | tp3">Your cart is empty</p>
+          <div class="header__cart-product" id="cart-product-container">
+          </div>
+          <button type="button" class="header__cart-checkout | tp3" aria-controls="shopping-cart" id="checkout-button" hidden>Checkout</button>
+        </dialog>
+      </div>
       <button class="header__profile-button" aria-controls="profile-menu"><img src="./images/image-avatar.png" alt="profile picture" height="25" width="25"></button>
     </div>
   </header>
+
+  <hr hidden>
 
   <main class="main">
     <section role="region" aria-label="shoe photo gallery" class="main__gallery" id="photo-gallery">
@@ -71,6 +75,20 @@
       </div>
       <button class="main__gallery-next" aria-label="next photo" aria-controls="photo-gallery" onclick="changeSlides(1)"><img src="./images/icon-next.svg" alt="right arrow"></button>
       <button class="main__gallery-previous" aria-label="previous photo" aria-controls="photo-gallery" onclick="changeSlides(-1)"><img src="./images/icon-previous.svg" alt="left arrow"></button>
+      <div class="main__gallery-thumbnail-container" hidden>
+        <div aria-label="thumbnail 1 of 4" class="main__gallery-thumbnail" id="thumbnail-1" onclick="showSlide(0)">
+          <img src="./images/image-product-1-thumbnail.jpg" alt="" width="88" height="88">
+        </div>
+        <div aria-label="thumbnail 2 of 4" class="main__gallery-thumbnail" id="thumbnail-2" onclick="showSlide(1)">
+          <img src="./images/image-product-2-thumbnail.jpg" alt="" width="88" height="88">
+        </div>
+        <div aria-label="thumbnail 3 of 4" class="main__gallery-thumbnail" id="thumbnail-3" onclick="showSlide(2)">
+          <img src="./images/image-product-3-thumbnail.jpg" alt="" width="88" height="88">
+        </div>
+        <div aria-label="thumbnail 4 of 4" class="main__gallery-thumbnail" id="thumbnail-4" onclick="showSlide(3)">
+          <img src="./images/image-product-4-thumbnail.jpg" alt="" width="88" height="88">
+        </div>
+      </div>
     </section>
     <section role="region" aria-labelledby="main-header" aria-describedby="main-description" class="main__info">
       <p class="main__info-company | company">SNEAKER COMPANY</p>
@@ -95,18 +113,20 @@
           <s>$250.00</s>
         </p>
       </div>
-      <div class="main__quantity-container">
-        <button class="main__quantity-minus | disabled" aria-label="minus quantity by 1" aria-controls="quantity" aria-disabled="true" onclick="changeQuantity(-1)" disabled ><img src="./images/icon-minus.svg" alt="" aria-label="minus one from qunatity"></button>
-        <p class="main__quantity | tp3" id="quantity" aria-live="assertive" aria-atomic="true">0</p>
-        <button class="main__quantity-plus" aria-label="increase quantity by 1" aria-controls="quantity" onclick="changeQuantity(1)"><img src="./images/icon-plus.svg" alt="" aria-label="add one to quantity"></button>
+      <div class="main__quantity-add-container">
+        <div class="main__quantity-container">
+          <button class="main__quantity-minus | disabled" aria-label="minus quantity by 1" aria-controls="quantity" aria-disabled="true" onclick="changeQuantity(-1)" disabled ><img src="./images/icon-minus.svg" alt="" aria-label="minus one from qunatity"></button>
+          <p class="main__quantity | tp3" id="quantity" aria-live="assertive" aria-atomic="true">0</p>
+          <button class="main__quantity-plus" aria-label="increase quantity by 1" aria-controls="quantity" onclick="changeQuantity(1)"><img src="./images/icon-plus.svg" alt="" aria-label="add one to quantity"></button>
+        </div>
+        <div role="dialog" class="main__error-container" aria-hidden="true">
+          <p class="main__error-message | menu-dt" aria-live="assertive" aria-atomic="true"></p>
+        </div>
+        <button class="main__add-button | tp3" id="add-to-cart">
+          <img src="./images/icon-cart.svg" alt="shopping-cart">
+          Add to cart
+        </button>
       </div>
-      <div role="dialog" class="main__error-container" aria-hidden="true">
-        <p class="main__error-message | menu-dt" aria-live="assertive" aria-atomic="true"></p>
-      </div>
-      <button class="main__add-button | tp3" id="add-to-cart">
-        <img src="./images/icon-cart.svg" alt="shopping-cart">
-        Add to cart
-      </button>
     </section>
   </main>
   <script src="script.js"></script>

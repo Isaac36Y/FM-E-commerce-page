@@ -40,10 +40,21 @@ const toggleMenu = () => {
     }
 }
 
+const lightSelectedImage = (n) => {
+    let thumbnails = document.querySelectorAll('.main__gallery-thumbnail')
+    thumbnails.forEach(img => {
+        if (img.classList.contains('selected-img')) {
+            img.classList.remove('selected-img')
+        }
+    })
+    document.querySelector(`#thumbnail-${n + 1}`).classList.add('selected-img')
+}
+
 const showSlide = (n) => {
     slides.forEach((slide, i) => {
         slide.style.display = i === n ? 'block' : 'none'
     })
+    lightSelectedImage(n)
 }
 showSlide(index)
 
