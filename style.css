@@ -178,12 +178,15 @@ p {
 /* header */
 
 .header {
+    max-width: 75rem;
+    margin-inline: auto;
+}
+
+.header__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
-    max-width: 75rem;
-    margin-inline: auto;
+
 }
 
 .header__menu-button, .header__cart-button, .header__profile-button, .main__quantity-minus, .main__quantity-plus, .header__cart-delete, .header__cart-checkout {
@@ -478,17 +481,20 @@ p {
     body {
         padding-inline: 10vw;
     }
-    hr {
-        display: block;
-        max-width: 75rem;
-        margin-inline: auto;
-    }
+
     main {
         margin-block: 2rem;
     }
 
-    .header {
-        padding: 1.5rem 0rem;
+    .header__container {
+        height: 6rem;
+    }
+
+    .divider {
+        display: block;
+        height: 0.1rem;
+        width: 100%;
+        background-color: var(--grey300);
     }
 
     .main__quantity-add-container {
@@ -549,7 +555,8 @@ p {
     }
 
     .header__nav-desktop {
-        display: block;
+        display: flex;
+        
     }
 
     .header__nav-desktop-ul {
@@ -559,6 +566,17 @@ p {
 
     .header__left-container {
         gap: 4rem;
+    }
+
+    .header__nav-desktop-li {
+        display: flex;
+        align-items: center;
+        height: 6rem;
+        border-block: 0.2rem solid transparent;
+    }
+    .header__nav-desktop-li:hover {
+        border-bottom: 0.2rem solid var(--orange500);
+        cursor: pointer;
     }
 
     .main {
@@ -602,7 +620,11 @@ p {
     
     .main__gallery-thumbnail img {
         border-radius: 0.6rem;
+    }
 
+    .main__gallery-thumbnail img:hover {
+        opacity: 0.5;
+        cursor: pointer;
     }
 
     .main__gallery-thumbnail {
@@ -626,6 +648,14 @@ p {
 
      .main__quantity-add-container {
         grid-template-columns: 2fr 3fr;
+    }
+
+    .main__quantity-minus:hover, .main__quantity-plus:hover, .main__add-button:hover, .header__cart-button:hover {
+        cursor: pointer;
+    }
+
+    .main__add-button:hover {
+        background-color: var(--orange300);
     }
 
     /* lightbox */

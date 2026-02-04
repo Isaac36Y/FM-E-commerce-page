@@ -9,55 +9,56 @@
 </head>
 <body>
   <header class="header">
-    <div class="header__left-container">
-      <button type="button" aria-controls="mobile-nav" aria-label="open the menu" aria-expanded="false" class="header__menu-button" id="menu-btn">
-        <svg viewBox="0 0 100 70" width="16" height="20" class="header__hamburger">
-          <rect width="100" height="15"></rect>
-          <rect y="35" width="100" height="15"></rect>
-          <rect y="70" width="100" height="15"></rect>
-        </svg>
-      </button>
-      <div class="dim-bg-menu" onclick="toggleMenu()" hidden></div>
-      <nav class="header__nav-mobile | menu-mobile" id="mobile-nav">
-        <ul class="header__nav-mobile-ul">
-          <li class="header__nav-mobile-li">Collections</li>
-          <li class="header__nav-mobile-li">Men</li>
-          <li class="header__nav-mobile-li">Women</li>
-          <li class="header__nav-mobile-li">About</li>
-          <li class="header__nav-mobile-li">Contact</li>
-        </ul>
-      </nav>
-      <img src="./images/logo.svg" alt="company logo" aria-label="company logo" width="137" height="20">
-      <nav class="header__nav-desktop | menu-dt" hidden>
-        <ul class="header__nav-desktop-ul | description">
-          <li class="header__nav-desktop-li">Collections</li>
-          <li class="header__nav-desktop-li">Men</li>
-          <li class="header__nav-desktop-li">Women</li>
-          <li class="header__nav-desktop-li">About</li>
-          <li class="header__nav-desktop-li">Contact</li>
-        </ul>
-      </nav>
-    </div>
-    <div class="header__right-container">
-      <div class="header__cart-and-button-container">
-        <button class="header__cart-button" aria-controls="shopping-cart" id="cart-button" onclick="dialog.toggleAttribute('open')">
-          <img src="./images/icon-cart.svg" alt="shopping cart">
-          <div class="header__cart-button-quantity"></div>
+    <div class="header__container">
+      <div class="header__left-container">
+        <button type="button" aria-controls="mobile-nav" aria-label="open the menu" aria-expanded="false" class="header__menu-button" id="menu-btn">
+          <svg viewBox="0 0 100 70" width="16" height="20" class="header__hamburger">
+            <rect width="100" height="15"></rect>
+            <rect y="35" width="100" height="15"></rect>
+            <rect y="70" width="100" height="15"></rect>
+          </svg>
         </button>
-        <dialog class="header__cart" id="shopping-cart">
-          <p class="header__cart-head | tp3">Cart</p>
-          <hr>
-          <p class="header__cart-empty | tp3">Your cart is empty</p>
-          <div class="header__cart-product" id="cart-product-container">
-          </div>
-          <button type="button" class="header__cart-checkout | tp3" aria-controls="shopping-cart" id="checkout-button" hidden>Checkout</button>
-        </dialog>
+        <div class="dim-bg-menu" onclick="toggleMenu()" hidden></div>
+        <nav class="header__nav-mobile | menu-mobile" id="mobile-nav">
+          <ul class="header__nav-mobile-ul">
+            <li class="header__nav-mobile-li">Collections</li>
+            <li class="header__nav-mobile-li">Men</li>
+            <li class="header__nav-mobile-li">Women</li>
+            <li class="header__nav-mobile-li">About</li>
+            <li class="header__nav-mobile-li">Contact</li>
+          </ul>
+        </nav>
+        <img src="./images/logo.svg" alt="company logo" aria-label="company logo" width="137" height="20">
+        <nav class="header__nav-desktop | menu-dt" hidden>
+          <ul class="header__nav-desktop-ul | description">
+            <li class="header__nav-desktop-li">Collections</li>
+            <li class="header__nav-desktop-li">Men</li>
+            <li class="header__nav-desktop-li">Women</li>
+            <li class="header__nav-desktop-li">About</li>
+            <li class="header__nav-desktop-li">Contact</li>
+          </ul>
+        </nav>
       </div>
-      <button class="header__profile-button" aria-controls="profile-menu"><img src="./images/image-avatar.png" alt="profile picture" height="25" width="25"></button>
+      <div class="header__right-container">
+        <div class="header__cart-and-button-container">
+          <button class="header__cart-button" aria-controls="shopping-cart" id="cart-button" onclick="dialog.toggleAttribute('open')">
+            <img src="./images/icon-cart.svg" alt="shopping cart">
+            <div class="header__cart-button-quantity"></div>
+          </button>
+          <dialog class="header__cart" id="shopping-cart">
+            <p class="header__cart-head | tp3">Cart</p>
+            <hr>
+            <p class="header__cart-empty | tp3">Your cart is empty</p>
+            <div class="header__cart-product" id="cart-product-container">
+            </div>
+            <button type="button" class="header__cart-checkout | tp3" aria-controls="shopping-cart" id="checkout-button" hidden>Checkout</button>
+          </dialog>
+        </div>
+        <button class="header__profile-button" aria-controls="profile-menu"><img src="./images/image-avatar.png" alt="profile picture" height="25" width="25"></button>
+      </div>
     </div>
+    <div class="divider" hidden></div>
   </header>
-
-  <hr hidden>
 
   <main class="main">
     <section role="region" aria-label="shoe photo gallery" class="main__gallery" id="photo-gallery" onclick="showLightbox()">
