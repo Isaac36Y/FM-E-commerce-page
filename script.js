@@ -121,6 +121,15 @@ const showError = () => {
         
 }
 
+const toggleDialog = (button) => {
+    const dialogId = button.getAttribute('aria-controls')
+    const dialog = document.getElementById(dialogId)
+    
+    if (dialog) {
+        dialog.toggleAttribute('open')
+    }
+}
+
 const showCartQuantity = () => {
     let totalQuant =+ cartItems.map(item => item.quantity).reduce((acc, currValue) => {return acc + currValue}, 0)
 
