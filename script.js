@@ -100,7 +100,7 @@ const disableMinusBtn = (n) => {
 
 const changeQuantity = (n) => {
     quant = Math.max(0, quant + n);
-    quantity.innerText = quant;
+    pickedQuantity.innerText = quant;
     disableMinusBtn(quant);
 }
 
