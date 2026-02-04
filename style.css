@@ -628,7 +628,8 @@ p {
     }
 
     .main__gallery-thumbnail {
-        border-radius: 2px solid transparent;
+        border: 0.1rem solid transparent;
+        background-color: transparent;
     }
 
     .selected-img img {
@@ -636,12 +637,12 @@ p {
     }
 
     .selected-img {
-        border: 2px solid var(--orange500);
+        border: 0.1rem solid var(--orange500);
         border-radius: 0.75rem
     }
 
     .main__info {
-        width: 440px;
+        width: 27.5rem;
         margin: 1rem 0 1rem auto;
         
     }

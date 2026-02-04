@@ -25,18 +25,18 @@ let quant = +pickedQuantity.innerText;
 
 
 const toggleMenu = () => {
-    let open = navMenu.classList.contains('open');
+    const open = navMenu.classList.contains('open');
     navMenu.classList.toggle('open');
     if (!open) {
         navMenu.style.visibility = 'visible';
         menuBtn.setAttribute('aria-expanded', 'true');
-        overlay.removeAttribute('hidden')  
+        menuOverlay.removeAttribute('hidden')  
     }else {
         setTimeout(() => {
             navMenu.style.visibility = 'hidden';
         }, 300)
         menuBtn.setAttribute('aria-expanded', 'false');
-        overlay.setAttribute('hidden', '')
+        menuOverlay.setAttribute('hidden', '')
     }
 }
 
@@ -46,11 +46,11 @@ const lightSelectedImage = (n) => {
     thumbnails.forEach(img => {
         if (img.classList.contains('selected-img')) {
             img.classList.remove('selected-img')
-            img.setAttribute('aria-selected', 'false')
+            img.setAttribute('aria-expanded', 'false')
         }
     })
     thumbnail.classList.add('selected-img')
-    thumbnail.setAttribute('aria-selected', 'true')
+    thumbnail.setAttribute('aria-expanded', 'true')
 }
 
 const showSlide = (n) => {
@@ -186,3 +186,5 @@ menuBtn.addEventListener('click', () => {
 addToCartBtn.addEventListener('click', () => {
     addsProductToCart()
 })
+
+
